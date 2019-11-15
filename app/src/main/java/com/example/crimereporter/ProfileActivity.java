@@ -68,22 +68,22 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-                Map<String, String> map = dataSnapshot.getValue(Map.class);
-                String nam = map.get("name");
-                String ci = map.get("city");
-                String mo = map.get("mobileNo");
-                String po = map.get("postAddress");
-                String em = user1.getDisplayName();
-                String co = map.get("country");
+               UserInformation value = dataSnapshot.getValue(UserInformation.class);
+               // Log.d(TAG, "Value is: " + value);
 
-                name.setText("Name: "+nam);
-                email.setText("Email: "+em);
-                mobile.setText("Mobile: "+mo);
-                city.setText("City: "+ci);
-                age.setText("Post Address: "+po);
-                country.setText("Country: "+co);
+                   String nam = value.name;
+                   String ci = value.city;
+                  String mo = value.mobileNo;
+                 String po = value.postAddress;
+                 String em = user1.getDisplayName();
+                 String co = value.country;
+
+                  name.setText(nam);
+                  email.setText(em);
+                 mobile.setText(mo);
+                  city.setText(ci);
+                  age.setText(po);
+                  country.setText(co);
 
 
 
