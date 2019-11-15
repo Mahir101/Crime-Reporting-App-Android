@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
                    String ci = value.city;
                   String mo = value.mobileNo;
                  String po = value.postAddress;
-                 String em = user1.getDisplayName();
+                 String em = user1.getEmail();
                  String co = value.country;
 
                   name.setText(nam);
@@ -84,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
                   city.setText(ci);
                   age.setText(po);
                   country.setText(co);
+                  email.setEnabled(false);
 
 
 
@@ -102,7 +103,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
                 final String TAG = "marakhacchi";
-                String emailx = email.getText().toString().trim();
+               // String emailx = email.getText().toString().trim();
                 final String namex = name.getText().toString().trim();
                 final String cityx = city.getText().toString().trim();
                 final String countryx = country.getText().toString().trim();
@@ -138,7 +139,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     FirebaseUser user1 = mAuth.getCurrentUser();
                     UserInformation user2 = new UserInformation(namex, cityx, countryx, agex, mobilex);
-                    databaseRef.child("Users").child(user1.getUid()).setValue(user2);
+                    databaseRef.child(user1.getUid()).setValue(user2);
 
                    sendToMain();
                 }
