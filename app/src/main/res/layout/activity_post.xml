@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".PostActivity">
+
+    <ImageButton
+
+        android:id="@+id/imageSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:background="#00ffffff"
+        android:scaleType="centerCrop"
+        app:srcCompat="@mipmap/add_btn" />
+
+    <EditText
+        android:id="@+id/titleSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageSelect"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_outline"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/descSelect"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/titleSelect"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_outline"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descSelect"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:text="submit post"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="17sp" />
+</RelativeLayout>
