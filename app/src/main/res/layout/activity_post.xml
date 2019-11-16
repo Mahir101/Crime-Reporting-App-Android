@@ -8,7 +8,16 @@
     android:layout_marginRight="10dp"
     tools:context=".PostActivity">
 
-    <ImageButton
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
 
         android:id="@+id/imageSelect"
         android:layout_width="match_parent"
@@ -52,4 +61,8 @@
         android:text="submit post"
         android:textColor="@color/cardview_light_background"
         android:textSize="17sp" />
+        </LinearLayout>>
+
+
+    </ScrollView>
 </RelativeLayout>
