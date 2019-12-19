@@ -2,10 +2,11 @@ package com.example.crimereporter;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
@@ -58,10 +59,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                     Intent intent = new Intent(MapActivity.this, PostActivity.class);
-
 
                     intent.putExtra("Latitude", lat);
                     intent.putExtra("Longtitude", lng);

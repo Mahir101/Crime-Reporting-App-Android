@@ -1,9 +1,10 @@
 package com.example.crimereporter;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -16,6 +17,13 @@ public class FirstActivity extends AppCompatActivity {
 
     public void sendtoMain(View view) {
         Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+
+        startActivity(intent);
+        finish();
+    }
+
+    public void sendtoMain2(View view) {
+        Intent intent = new Intent(FirstActivity.this, AdminLogin.class);
 
         startActivity(intent);
         finish();

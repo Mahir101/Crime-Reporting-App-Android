@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PostDetailActivity"></activity>
+        <activity android:name=".AdminLogin"></activity>
+        <activity android:name=".PostDetailActivity" />
         <activity android:name=".MissingActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SplashActivity">
