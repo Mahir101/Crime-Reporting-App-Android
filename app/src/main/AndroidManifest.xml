@@ -18,7 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AdminLogin"></activity>
+        <activity android:name=".AdminCrimeActivity"></activity>
+        <activity android:name=".AdminMissingActivity" />
+        <activity android:name=".WebActivity" />
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".AdminLogin" />
         <activity android:name=".PostDetailActivity" />
         <activity android:name=".MissingActivity" />
         <activity android:name=".ProfileActivity" />

@@ -8,7 +8,7 @@
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
-    s
+
     <item
         android:id="@+id/actionAdd"
         android:icon="@mipmap/baseline_add_white_24"
@@ -21,17 +21,22 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/actionMiss"
-        android:title="Missing Report"
+        android:title="Add Missing Report"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/showMiss"
+        android:title="Missing Reports"
         app:showAsAction="never" />
     <item
         android:id="@+id/actionProfile"
         android:title="My Profile"/>
+
+    <item
+        android:id="@+id/actionWeb"
+        android:title="Our BLOG"/>
     <item
         android:id="@+id/actionMap"
         android:title="Show Crime Map"/>
-    <item
-        android:id="@+id/actionAccountSettingsbtn"
-        android:title="@string/account_setting" />
     <item
         android:id="@+id/actionlogoutbtn"
         android:title="@string/action_Logout" />

@@ -55,22 +55,7 @@
                     style="@style/Base.Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <Button
-                    android:id="@+id/shareBtn"
-                    android:layout_weight="1"
-                    android:text="Share"
-                    android:drawableLeft="@drawable/ic_action_share"
-                    style="@style/Base.Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <Button
-                    android:id="@+id/wallBtn"
-                    android:layout_weight="1"
-                    android:text="Wall"
-                    android:drawableLeft="@drawable/ic_action_wall"
-                    style="@style/Base.Widget.AppCompat.Button.Colored"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
         </LinearLayout>

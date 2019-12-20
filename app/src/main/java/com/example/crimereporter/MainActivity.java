@@ -1,18 +1,13 @@
 package com.example.crimereporter;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +23,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-
-import java.io.ByteArrayOutputStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Post Post1, int position) {
-                        viewHolder.setDetails(getApplicationContext(), Post1.getTitle(), Post1.getDescription(), Post1.getImage());
+                        viewHolder.setDetails(getApplicationContext(),Post1.getCondition(), Post1.getTitle(), Post1.getDescription(), Post1.getImage(),Post1.getType());
                     }
 
                     @Override
@@ -113,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
                         ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
 
-                        viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
+                          viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                //Views
-                                TextView mTitleTv = view.findViewById(R.id.reTitle);
+
+                              /*TextView mTitleTv = view.findViewById(R.id.reTitle);
                                 TextView mDescTv = view.findViewById(R.id.reDesc);
                                 ImageView mImageView = view.findViewById(R.id.reImage);
                                 //get data from views
@@ -134,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("image", bytes); //put bitmap image as array of bytes
                                 intent.putExtra("title", mTitle); // put title
                                 intent.putExtra("description", mDesc); //put description
-                                startActivity(intent); //start activity
+                                startActivity(intent); //start activity*/
 
 
                             }
@@ -144,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                                 //TODO do your own implementaion on long item click
                             }
                         });
+
+
+
 
                         return viewHolder;
                     }
@@ -173,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Post Post1, int position) {
-                        viewHolder.setDetails(getApplicationContext(), Post1.getTitle(), Post1.getDescription(), Post1.getImage());
+                        viewHolder.setDetails(getApplicationContext(),Post1.getCondition(), Post1.getTitle(), Post1.getDescription(), Post1.getImage(), Post1.getType());
                     }
 
                     @Override
@@ -185,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //Views
-                                TextView mTitleTv = view.findViewById(R.id.reTitle);
+                                /*TextView mTitleTv = view.findViewById(R.id.reTitle);
                                 TextView mDescTv = view.findViewById(R.id.reDesc);
                                 ImageView mImageView = view.findViewById(R.id.reImage);
                                 //get data from views
@@ -205,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                                 Log.d(TAG,mTitle);
                                 intentx.putExtra("description", mDesc); //put description
                                 Log.d(TAG,mDesc);
-                                startActivity(intentx);
+                                startActivity(intentx);*/
 
 
                             }
@@ -215,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
                                 //TODO do your own implementaion on long item click
                             }
                         });
+
+
 
                         return viewHolder;
                     }
@@ -269,9 +267,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent missintent = new Intent(MainActivity.this, MissingActivity.class);
                 startActivity(missintent);
                 return true;
+            case R.id.actionWeb:
+                Intent web = new Intent(MainActivity.this, WebActivity.class);
+                startActivity(web);
+                return true;
             case R.id.actionProfile:
                 Intent profileintent = new Intent(MainActivity.this, ProfileActivity.class);
                 startActivity(profileintent);
+                return true;
+            case R.id.showMiss:
+                Intent showmiss = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(showmiss);
                 return true;
             case R.id.actionMap:
                 Intent mapintent = new Intent(MainActivity.this, MapActivity.class);

@@ -9,7 +9,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminLogin extends AppCompatActivity {
 
@@ -17,7 +23,7 @@ public class AdminLogin extends AppCompatActivity {
     private EditText passwordText;
     private Button loginBtn;
    // private Button mregbtn;
-   // private FirebaseAuth fireAuth;
+    private FirebaseAuth fireAuth;
     private ProgressBar loginProgress;
 
     @Override
@@ -25,7 +31,7 @@ public class AdminLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 
-     //   fireAuth = FirebaseAuth.getInstance();
+        fireAuth = FirebaseAuth.getInstance();
         emailText = (EditText) findViewById(R.id.loginemail);
         passwordText = (EditText) findViewById(R.id.loginpassword);
         loginBtn = (Button) findViewById(R.id.loginbtn);
@@ -38,16 +44,20 @@ public class AdminLogin extends AppCompatActivity {
             public void onClick(View v) {
                 String email_login = emailText.getText().toString();
                 String pass_login = passwordText.getText().toString();
+
                 if(!TextUtils.isEmpty(email_login) && !TextUtils.isEmpty(pass_login)){         //checking if elements are empty
                     loginProgress.setVisibility(View.VISIBLE);
-                    String em = "admin@admin.com";
-                    String pass = "admin12345";
-                    if(email_login.equals(em) && pass_login.equals(pass)){
-                            sendToMain();
-                    }else {
-                        toastmessage("Can't Login. TRY AGAIN WITH CORRECT INFORMATION");
-                    }
 
+                    fireAuth.signInWithEmailAndPassword(email_login, pass_login).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                sendToAdmin();
+                            }else {
+                                toastmessage("Can't Login. TRY AGAIN WITH CORRECT INFORMATION");
+                            }
+                        }
+                    });
                     loginProgress.setVisibility(View.INVISIBLE);
                 }
                 else{
@@ -70,8 +80,8 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     //sending to main
-    public void sendToMain(){
-        Intent mainIntent = new Intent(AdminLogin.this, MainActivity.class);
+    public void sendToAdmin(){
+        Intent mainIntent = new Intent(AdminLogin.this, AdminCrimeActivity.class);
         startActivity(mainIntent);
         finish();
     }

@@ -10,5 +10,8 @@
     <string name="action_settings">Settings</string>
     <string name="action_Logout">Log Out</string>
     <string name="regstring">Register</string>
+    <string name="access_token">sk.eyJ1IjoibWFoaXIxMDEiLCJhIjoiY2s0Y28wNHZjMGxoZTNrcGI0NW92czc0OCJ9.gqmIPzYPe4-V6wEAr2Hw-g</string>
+    <string name="country_prompt">Choose the Crime occured!</string>
+
 
 </resources>

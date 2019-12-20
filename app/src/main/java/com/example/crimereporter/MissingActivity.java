@@ -3,8 +3,6 @@ package com.example.crimereporter;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,10 +45,11 @@ public class MissingActivity extends AppCompatActivity {
     private Uri imagePath = null;
     private ProgressDialog progressBar;
 
-    private DatabaseReference databaseRef;
-    private StorageReference storageRef;
+    private DatabaseReference databaseRef,dba;
+    private StorageReference storageRef,sba;
 
     private FirebaseAuth mAuth;
+    private String adminUUID = "7UQtnet3OChJ5d7eXViVi9Yuxm32";
 
     static final int GALLERY_REQUEST = 1;
 
@@ -71,7 +73,11 @@ public class MissingActivity extends AppCompatActivity {
         progressBar = new ProgressDialog(this);
 
         storageRef = FirebaseStorage.getInstance().getReference();
+       // sba = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Missing");
+        dba = FirebaseDatabase.getInstance().getReference().child("Admin_Missing");
+
+
 
 
         imgbtn.setOnClickListener(new View.OnClickListener() {
@@ -115,9 +121,11 @@ public class MissingActivity extends AppCompatActivity {
 
             //path where posts are to be stored on the server
             final StorageReference filePath = storageRef.child("Missing").child(UUID.randomUUID().toString());
+//            final StorageReference filePath1 = storageRef.child("Admin_Missing").child(UUID.randomUUID().toString());
             //final StorageReference filePath = storageRef;
             FirebaseUser user1 = mAuth.getCurrentUser();
             final DatabaseReference newpost = databaseRef.child(user1.getUid()).push();
+            final DatabaseReference adminpost = dba.child(adminUUID).push();
             //uploading hobe
 
             filePath.putFile(imagePath)
@@ -131,7 +139,8 @@ public class MissingActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String downloadUri = uri.toString();
-                                    newpost.child("image").setValue( downloadUri.toString());
+                                    newpost.child("image").setValue( downloadUri);
+                                    adminpost.child("image").setValue( downloadUri);
                                     //do your stuff- uri.toString() will give you download URL\\
                                 }
                             });
@@ -143,6 +152,17 @@ public class MissingActivity extends AppCompatActivity {
                             newpost.child("city").setValue(missCity);
                             newpost.child("dresscolor").setValue(missDC);
                             newpost.child("gender").setValue(missGender);
+
+
+
+                            adminpost.child("name").setValue(missName);
+                            adminpost.child("description").setValue(missDesc);
+
+                            adminpost.child("age").setValue(missAge);
+                            adminpost.child("address").setValue(missAddress);
+                            adminpost.child("city").setValue(missCity);
+                            adminpost.child("dresscolor").setValue(missDC);
+                            adminpost.child("gender").setValue(missGender);
 
 
                             progressBar.dismiss();

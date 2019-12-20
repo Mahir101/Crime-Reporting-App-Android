@@ -34,7 +34,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
     Bitmap bitmap;
 
-    Button mSaveBtn, mShareBtn, mWallBtn;
+    Button mSaveBtn;
 
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
     private Toolbar mainToolbar;
@@ -45,8 +45,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
         //Action bar
         try {
-            mainToolbar = findViewById(R.id.main_toolbar);
-            setSupportActionBar(mainToolbar);
+            //mainToolbar = findViewById(R.id.main_toolbar);
+            //setSupportActionBar(mainToolbar);
             //getSupportActionBar().setTitle("Crime Reports");
 
             //initialize views
@@ -54,8 +54,8 @@ public class PostDetailActivity extends AppCompatActivity {
             mDetailTv = findViewById(R.id.descriptionTv);
             mImageIv = findViewById(R.id.imageView);
             mSaveBtn = findViewById(R.id.saveBtn);
-            mShareBtn = findViewById(R.id.shareBtn);
-            mWallBtn = findViewById(R.id.wallBtn);
+
+
 
             //get data from intent
 
@@ -96,20 +96,8 @@ public class PostDetailActivity extends AppCompatActivity {
                 }
 
             });
-            //share btn click handle
-            mShareBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    shareImage();
-                }
-            });
-            //set wallpaper btn click handle
-            mWallBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setImgWallpaper();
-                }
-            });
+
+
         }
         catch(Exception e) {
 

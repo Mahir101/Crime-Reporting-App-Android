@@ -44,8 +44,8 @@ dependencies {
 
     //mapbox
     //implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.3'
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:6.0.1'
     //implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.5.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:6.0.1'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.5.0'
     //support
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'

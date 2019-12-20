@@ -13,14 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/reTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Title"
             android:textColor="#000"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/reImage"
@@ -33,10 +34,22 @@
         <TextView
             android:id="@+id/reDesc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="94dp"
             android:text="This will be the description of the post"
             android:textColor="#3949AB"
-            android:textSize="20sp" />
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/reType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type" />
+
+        <TextView
+            android:id="@+id/reText"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:text="Status" />
 
     </LinearLayout>
 

@@ -8,7 +8,7 @@ public class Missing {
 
     }
 
-    public Missing(String image, String name, String age, String gender, String city, String dresscolor) {
+    public Missing(String image, String name, String age, String gender, String city, String dresscolor, String description, String address) {
         this.name = name;
         this.description = description;
         this.image = image;

@@ -2,17 +2,57 @@ package com.example.crimereporter;
 
 public class Post {
 
-    String title, description, image;
+    String title, description, image, condition, latitude, longitude, type;
 
     public Post(){
 
     }
 
-    public Post(String title, String description, String image) {
+    public Post(String title, String description, String image, String condition, String latitude, String longitude, String type) {
         this.title = title;
         this.description = description;
         this.image = image;
+        this.condition = condition;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.type = type;
     }
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String image) {
+        this.longitude = longitude;
+    }
+
+
 
     public String getImage() {
         return image;
