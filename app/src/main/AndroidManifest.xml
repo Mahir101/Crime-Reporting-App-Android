@@ -18,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".UIActivity"></activity>
         <activity android:name=".AdminCrimeActivity" />
         <activity android:name=".AdminMissingActivity" />
         <activity android:name=".WebActivity" />

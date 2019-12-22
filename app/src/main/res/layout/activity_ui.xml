@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    tools:context=".UIActivity">
+
+
+    <Button
+        android:id="@+id/pb1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/pb3"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s1"
+        android:padding="15dp"
+        android:text="Missing Reports" />
+
+    <Button
+        android:id="@+id/pb3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/pb5"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s4"
+        android:padding="15dp"
+        android:text="File a Missing Report" />
+
+    <Button
+        android:id="@+id/pb2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/pb4"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s2"
+        android:padding="5dp"
+        android:text="Your Crime Reports" />
+
+    <Button
+        android:id="@+id/pb4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/pb6"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s3"
+        android:padding="15dp"
+        android:text="Report a Crime" />
+
+    <Button
+        android:id="@+id/pb5"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="239dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s5"
+        android:padding="15dp"
+        android:text="Blog" />
+
+    <Button
+        android:id="@+id/pb6"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/button_bg_round"
+        android:onClick="s6"
+        android:padding="15dp"
+        android:text="Your Profile" />
+</RelativeLayout>
