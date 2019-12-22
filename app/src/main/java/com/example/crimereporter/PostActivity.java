@@ -157,7 +157,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
             final StorageReference filePath = storageRef.child("Crime_images").child(UUID.randomUUID().toString());
             //final StorageReference filePath = storageRef;
             FirebaseUser user1 = mAuth.getCurrentUser();
-            final DatabaseReference newpost = databaseRef.child(user1.getUid()).push();
+            final DatabaseReference newpost = databaseRef.push();
             final DatabaseReference adminpost = dba.child(adminUUID).push();
             //uploading hobe
 
@@ -183,6 +183,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                            newpost.child("latitude").setValue(lat);
                            newpost.child("longitude").setValue(lng);
                            newpost.child("type").setValue(type);
+                           newpost.child("uid").setValue(user1.getUid());
 
 
                            adminpost.child("title").setValue(postTitle);

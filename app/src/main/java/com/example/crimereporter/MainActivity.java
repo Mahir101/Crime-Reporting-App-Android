@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mSharedPref; //saving sort settings
     RecyclerView mRecyclerView;
     FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
     DatabaseReference mRef;
 
     private Toolbar mainToolbar;
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user1 = mAuth.getCurrentUser();
 
         //toolbar er jonne
         mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -73,21 +75,21 @@ public class MainActivity extends AppCompatActivity {
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
 
-        FirebaseUser user1 = fireAuth.getCurrentUser();
+
         FirebaseUser currentuser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentuser == null) {
             sendtoLogin();
         }
         else
-            mRef = mFirebaseDatabase.getReference().child("Crime").child(user1.getUid());
+            mRef = mFirebaseDatabase.getReference().child("Crime");
 
     }
     private void firebaseSearch(String searchText) {
-
+        FirebaseUser user1 = fireAuth.getCurrentUser();
         //convert string entered in SearchView to lowercase
         String query = searchText;
-
-        Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
+        Query x = mRef.orderByChild("uid").equalTo(user1.getUid());
+        Query firebaseSearchQuery = x.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
         FirebaseRecyclerAdapter<Post, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Post, ViewHolder>(
@@ -160,12 +162,14 @@ public class MainActivity extends AppCompatActivity {
         if (currentuser == null) {
             sendtoLogin();
         }
+        FirebaseUser user1 = mAuth.getCurrentUser();
+        Query x = mRef.orderByChild("uid").equalTo(user1.getUid());
         FirebaseRecyclerAdapter<Post, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Post, ViewHolder>(
                         Post.class,
                         R.layout.row,
                         ViewHolder.class,
-                        mRef
+                        x
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Post Post1, int position) {

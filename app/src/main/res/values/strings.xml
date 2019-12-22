@@ -3,6 +3,8 @@
     <string name="pass_hint">Password</string>
     <string name="email_hint">Email</string>
     <string name="login">login</string>
+    <string name="LogIn">Log In</string>
+    <string name="signup">Sign Up</string>
     <string name="create_account">Need an account? Sign up!</string>
     <string name="welcome_msg">Welcome to Crime Reporting App</string>
     <string name="welcome_msg2">ADMIN LOGIN PANEL</string>

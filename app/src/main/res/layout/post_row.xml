@@ -34,7 +34,17 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:text="Post description" />
+        <TextView
+            android:id="@+id/reType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type" />
 
+        <TextView
+            android:id="@+id/reText"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:text="Status" />
 
     </LinearLayout>
 

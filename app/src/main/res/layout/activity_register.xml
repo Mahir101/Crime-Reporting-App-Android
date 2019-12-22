@@ -1,129 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
-    android:layout_margin="15dp">
+    android:background="@drawable/bg">
 
-    <EditText
-        android:id="@+id/regCountry"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Country"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regName" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="210dp"
+        android:layout_height="130dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/logoc" />
 
-    <EditText
-        android:id="@+id/regemail"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regMobile" />
-
-    <EditText
-        android:id="@+id/regpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/pass_hint"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regemail" />
-
-    <EditText
-        android:id="@+id/regconpass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regpass" />
-
-    <Button
-        android:id="@+id/regbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/regstring"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regconpass" />
+        android:text="@string/signup"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        />
 
     <EditText
         android:id="@+id/regName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        android:drawableLeft="@drawable/user"
+        android:paddingLeft="10dp"
+        android:background="@drawable/editround"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+         />
 
     <EditText
-        android:id="@+id/regMobile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:id="@+id/regCountry"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
         android:ems="10"
-        android:hint="Mobile Number"
-        android:inputType="number|text|phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regPostal" />
+        android:hint="Country"
+        android:inputType="text"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/location"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/regName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/regCountry">
+    <EditText
+        android:id="@+id/regCity"
+        android:layout_width="135dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="City"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/location"
+        android:paddingLeft="10dp"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/regPostal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="135dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
         android:ems="10"
-        android:hint="Postal Address"
+        android:hint="Postal Code"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/location"
+        android:paddingLeft="10dp"
         android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regCity" />
+        />
+    </LinearLayout>
 
     <EditText
-        android:id="@+id/regCity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:id="@+id/regMobile"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
         android:ems="10"
-        android:hint="City"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/regCountry" />
+        android:hint="Mobile Number"
+        android:inputType="number|text|phone"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/phone"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/linearlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+    <EditText
+        android:id="@+id/regemail"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/email"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/regMobile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+         />
+
+    <EditText
+        android:id="@+id/regpass"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="@string/pass_hint"
+        android:inputType="textPassword"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/password"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/regemail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        />
+
+    <EditText
+        android:id="@+id/regconpass"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:background="@drawable/editround"
+        android:drawableLeft="@drawable/confirm_password"
+        android:paddingLeft="10dp"
+        android:layout_below="@+id/regpass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+
+         />
+
+    <Button
+        android:id="@+id/regbutton"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:text="@string/regstring"
+        android:background="@drawable/btrounded"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/regconpass"
+        android:layout_centerHorizontal="true"
+         />
+
+</RelativeLayout>

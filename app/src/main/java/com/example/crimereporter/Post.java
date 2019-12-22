@@ -2,7 +2,7 @@ package com.example.crimereporter;
 
 public class Post {
 
-    String title, description, image, condition, latitude, longitude, type;
+    String uid,title, description, image, condition, latitude, longitude, type;
 
     public Post(){
 
@@ -16,6 +16,7 @@ public class Post {
         this.latitude = latitude;
         this.longitude = longitude;
         this.type = type;
+        this.uid = uid;
     }
     public String getCondition() {
         return condition;
@@ -24,7 +25,13 @@ public class Post {
     public void setCondition(String condition) {
         this.condition = condition;
     }
+    public String getUid() {
+        return uid;
+    }
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public String getType() {
         return type;

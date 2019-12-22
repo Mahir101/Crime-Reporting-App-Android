@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -50,7 +49,7 @@ public class AdminCrimeActivity extends AppCompatActivity {
         //toolbar er jonne
         mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
-        getSupportActionBar().setTitle("Crime Reports");
+        getSupportActionBar().setTitle("ADMIN SECTION: Crime Reports");
         fireAuth = FirebaseAuth.getInstance();
         mSharedPref = getSharedPreferences("SortSettings", MODE_PRIVATE);
         String mSorting = mSharedPref.getString("Sort", "newest"); //default=newest
@@ -84,9 +83,10 @@ public class AdminCrimeActivity extends AppCompatActivity {
             sendtoLogin();
         }
         else
-            mRef = mFirebaseDatabase.getReference().child("Admin_Crime").child(user1.getUid());
+            mRef = mFirebaseDatabase.getReference().child("Crime");
 
     }
+    String title="";
     private void firebaseSearch(String searchText) {
 
         //convert string entered in SearchView to lowercase
@@ -104,32 +104,13 @@ public class AdminCrimeActivity extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(ViewHolder viewHolder, Post Post1, int position) {
-                        final String title = Post1.getTitle();
-                        FirebaseDatabase mFD = FirebaseDatabase.getInstance();
-                        DatabaseReference mR = mFD.getReference("Crime");
-                        Query query= mR.orderByChild("title").equalTo(title);
 
-                        Log.d("ajgubi","wtf");
-                        query.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                dataSnapshot.getRef().child("condition").setValue("Seen");
-                                //for(DataSnapshot ds: dataSnapshot.getChildren()){
-                                //   ds.getRef().child("condition").setValue("Seen");
-                                //}
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
-
-
+                        title = Post1.getTitle();
                         viewHolder.setDetails(getApplicationContext(),"Seen", Post1.getTitle(), Post1.getDescription(), Post1.getImage(),Post1.getType());
                         //Post1.setCondition("Seen");
+
+
+                        Log.d("TAGS",title);
 
                     }
 
@@ -145,8 +126,53 @@ public class AdminCrimeActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
 
+                                FirebaseDatabase mFD = FirebaseDatabase.getInstance();
+                                DatabaseReference mR = mFD.getReference("Crime");
+                                //Query query= mR.orderByChild("title").equalTo(title);
+
+                              //  Log.d("ajgubi","wtf");
+//                                mR.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                       // dataSnapshot.getRef().child("condition").setValue("Seen");
+//                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+//
+//                                            ds.getRef().child("condition").setValue("Seen");
+//
+//                                        }
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                    }
+//                                });
+                                mRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        // This method is called once with the initial value and again
+                                        // whenever data at this location is updated.
+                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                                            ds.getRef().child("condition").setValue("Seen");
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError error) {
+                                        // Failed to read value
+                                        Log.w(TAG, "Failed to read value.", error.toException());
+                                    }
+                                });
+
+
+
+
+
+/*
                                 //Views
-                                /*TextView mTitleTv = view.findViewById(R.id.reTitle);
+                                TextView mTitleTv = view.findViewById(R.id.reTitle);
                                 TextView mDescTv = view.findViewById(R.id.reDesc);
                                 ImageView mImageView = view.findViewById(R.id.reImage);
                                 //get data from views
@@ -214,6 +240,24 @@ public class AdminCrimeActivity extends AppCompatActivity {
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+                                mRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        // This method is called once with the initial value and again
+                                        // whenever data at this location is updated.
+                                        for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                                            ds.getRef().child("condition").setValue("Seen");
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError error) {
+                                        // Failed to read value
+                                        Log.w(TAG, "Failed to read value.", error.toException());
+                                    }
+                                });
                                 //Views
                                 /*TextView mTitleTv = view.findViewById(R.id.reTitle);
                                 TextView mDescTv = view.findViewById(R.id.reDesc);

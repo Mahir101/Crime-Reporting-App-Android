@@ -50,6 +50,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         detailre.setText(description);
         typere.setText(type);
         Picasso.get().load(image).into(imagere);
+
+
+
     }
 
     public void setDetails2(Context ctx,String name, String age, String dresscolor, String image, String city, String gender, String description, String address){

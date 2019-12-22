@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,6 +103,7 @@ public class Main2Activity extends AppCompatActivity {
 
                     }
 
+
                     @Override
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -175,10 +177,12 @@ public class Main2Activity extends AppCompatActivity {
                     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
                         ViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-
+                        Log.d("TAGD",Long.toString(viewHolder.getItemId()));
                         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+
+                                Log.d("TAGD",Long.toString(viewHolder.getItemId()));
 
                               /* TextView mTitleTv = view.findViewById(R.id.reTitle);
                                 TextView mDescTv = view.findViewById(R.id.reDesc);

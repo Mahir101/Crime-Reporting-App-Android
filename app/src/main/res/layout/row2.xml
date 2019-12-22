@@ -40,35 +40,36 @@
 
         <TextView
             android:id="@+id/agem"
-            android:layout_width="190dp"
+            android:layout_width="46dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="268dp"
-            android:gravity="center|start"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="263dp"
+            android:gravity="center"
             android:text="Age" />
 
         <TextView
             android:id="@+id/genderm"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="224dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="229dp"
             android:text="Gender" />
 
         <TextView
             android:id="@+id/citym"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/genderm"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="11dp"
-            android:layout_marginBottom="179dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="150dp"
+            android:layout_marginBottom="197dp"
             android:text="City" />
-
         <TextView
             android:id="@+id/addressm"
             android:layout_width="190dp"
@@ -100,5 +101,5 @@
             android:text="Dress Color and Description" />
 
     </RelativeLayout>
-    <!--image, name, description, address, dresscolor, city, age, gender;-->
+<!--image, name, description, address, dresscolor, city, age, gender;-->
 </androidx.cardview.widget.CardView>
