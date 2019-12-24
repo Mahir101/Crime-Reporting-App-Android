@@ -12,19 +12,16 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
     }
 
     public void sendtoMain(View view) {
-        Intent intent = new Intent(FirstActivity.this, MainActivity.class);
-
+        Intent intent = new Intent(FirstActivity.this, UIActivity.class);
         startActivity(intent);
         finish();
     }
 
     public void sendtoMain2(View view) {
         Intent intent = new Intent(FirstActivity.this, AdminLogin.class);
-
         startActivity(intent);
         finish();
     }

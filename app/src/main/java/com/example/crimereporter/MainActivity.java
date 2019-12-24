@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user1 = fireAuth.getCurrentUser();
         //convert string entered in SearchView to lowercase
         String query = searchText;
-        Query x = mRef.orderByChild("uid").equalTo(user1.getUid());
-        Query firebaseSearchQuery = x.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
+       // Query x = mRef.orderByChild("uid").equalTo(user1.getUid());
+        Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
         FirebaseRecyclerAdapter<Post, ViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Post, ViewHolder>(
