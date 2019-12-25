@@ -15,7 +15,7 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public void sendtoMain(View view) {
-        Intent intent = new Intent(FirstActivity.this, UIActivity.class);
+        Intent intent = new Intent(FirstActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }

@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayoutManager mLayoutManager;
     SharedPreferences mSharedPref; //saving sort settings
     RecyclerView mRecyclerView;
-    FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
+    FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
 
     private Toolbar mainToolbar;

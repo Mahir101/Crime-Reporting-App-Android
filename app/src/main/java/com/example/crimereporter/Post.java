@@ -3,12 +3,13 @@ package com.example.crimereporter;
 public class Post {
 
     String uid,title, description, image, condition, latitude, longitude, type;
-
+    String year;
+    String month;
     public Post(){
 
     }
 
-    public Post(String title, String description, String image, String condition, String latitude, String longitude, String type) {
+    public Post(String title, String description, String image, String condition, String latitude, String longitude, String type, String month, String year) {
         this.title = title;
         this.description = description;
         this.image = image;
@@ -17,7 +18,17 @@ public class Post {
         this.longitude = longitude;
         this.type = type;
         this.uid = uid;
+        this.month=month;
+        this.year=year;
     }
+    public String getMonth() {
+        return month;
+    }
+    public String getYear() {
+        return year;
+    }
+
+
     public String getCondition() {
         return condition;
     }

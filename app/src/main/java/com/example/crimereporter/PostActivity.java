@@ -22,13 +22,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 public class PostActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -45,7 +50,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
     private Uri imagePath = null;
     private ProgressDialog progressBar;
 
-    private DatabaseReference databaseRef,dba;
+    private DatabaseReference databaseRef,dba,mRef,mRefm;
     private StorageReference storageRef;
 
     private FirebaseAuth mAuth;
@@ -73,6 +78,8 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Crime");
+        mRef = FirebaseDatabase.getInstance().getReference().child("Stat").child("Year");
+        mRefm = FirebaseDatabase.getInstance().getReference().child("Stat").child("Month");
         dba = FirebaseDatabase.getInstance().getReference().child("Admin_Crime");
 
         Spinner spin = (Spinner) findViewById(R.id.spinner);
@@ -177,6 +184,14 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                                    //do your stuff- uri.toString() will give you download URL\\
                                }
                            });
+                           SimpleDateFormat sdf  = new SimpleDateFormat("yyyy");
+                           String year = sdf.format(new Date());
+                           System.out.println(year);
+                           sdf = new SimpleDateFormat("mm");
+                           String mon = sdf.format(new Date());
+                           System.out.println(mon);
+
+
                            newpost.child("title").setValue(postTitle);
                            newpost.child("description").setValue(postDesc);
                            newpost.child("condition").setValue("Not Seen");
@@ -184,14 +199,106 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                            newpost.child("longitude").setValue(lng);
                            newpost.child("type").setValue(type);
                            newpost.child("uid").setValue(user1.getUid());
+                           newpost.child("year").setValue(year);
+                           //newpost.child("day").setValue(day);
+                           newpost.child("month").setValue(mon);
+
+
+                           mRef.addValueEventListener(new ValueEventListener() {
+                               @Override
+                               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                   for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                                       DataBar p1 = ds.getValue(DataBar.class);
+                                       String xs = ds.getRef().getKey();
+                                       Boolean f = false;
+                                       if(xs == year)
+                                       {
+                                           f=true;
+                                           float xp = p1.x;
+                                           xp++;
+                                           ds.getRef().child("x").setValue(xp);
+                                       }
+                                       if(f==false)
+                                       {
+                                           ds.getRef().child("x").setValue(1);
+                                       }
+
+
+
+
+                                   }
+
+                               }
+
+                               @Override
+                               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                               }
+                           });
+
+
+
+                           mRefm.addValueEventListener(new ValueEventListener() {
+                               @Override
+                               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                   for(DataSnapshot ds: dataSnapshot.getChildren()){
+
+                                       DataBar p1 = ds.getValue(DataBar.class);
+                                       String xs = ds.getRef().getKey();
+                                       Boolean f = false;
+
+                                       String sz="";
+                                       if(mon=="01") sz="1";
+                                       if(mon=="02") sz="2";
+                                       if(mon=="03") sz="3";
+                                       if(mon=="04") sz="4";
+                                       if(mon=="05") sz="5";
+                                       if(mon=="06") sz="6";
+                                       if(mon=="07") sz="7";
+                                       if(mon=="08") sz="8";
+                                       if(mon=="09") sz="9";
+                                       if(mon=="10") sz="10";
+                                       if(mon=="11") sz="11";
+                                       if(mon=="12") sz="12";
+
+                                       if(xs == sz)
+                                       {
+                                           f=true;
+                                           float xp = p1.x;
+                                           xp++;
+                                           ds.getRef().child("x").setValue(xp);
+                                       }
+                                       if(f==false)
+                                       {
+                                           ds.getRef().child("x").setValue(1);
+                                       }
+
+
+
+
+                                   }
+
+                               }
+
+                               @Override
+                               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                               }
+                           });
+
+
 
 
                            adminpost.child("title").setValue(postTitle);
                            adminpost.child("description").setValue(postDesc);
-                           adminpost.child("condition").setValue("Not Seen");
+                           adminpost.child("condition").setValue("Seen");
                            adminpost.child("latitude").setValue(lat);
                            adminpost.child("longitude").setValue(lng);
                            adminpost.child("type").setValue(type);
+                           newpost.child("year").setValue(year);
+                           newpost.child("month").setValue(mon);
+                          // newpost.child("day").setValue(day);
 
 
                            progressBar.dismiss();
