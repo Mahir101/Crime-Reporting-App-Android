@@ -15,7 +15,7 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public void sendtoMain(View view) {
-        Intent intent = new Intent(FirstActivity.this, MainActivity.class);
+        Intent intent = new Intent(FirstActivity.this, MapShowActivity.class);
         startActivity(intent);
         finish();
     }

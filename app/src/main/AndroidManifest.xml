@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PieChartActivity"></activity>
+        <activity android:name=".MapShowActivity"></activity>
+        <activity android:name=".PieChartActivity" />
         <activity android:name=".BarChartActivity" />
         <activity android:name=".ChartActivity" />
         <activity android:name=".UIActivity" />

@@ -50,7 +50,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
     private Uri imagePath = null;
     private ProgressDialog progressBar;
 
-    private DatabaseReference databaseRef,dba,mRef,mRefm;
+    private DatabaseReference databaseRef,dba,mRef,mRefm, dbloc;
     private StorageReference storageRef;
 
     private FirebaseAuth mAuth;
@@ -78,6 +78,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
 
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Crime");
+        dbloc = FirebaseDatabase.getInstance().getReference().child("Loc");
         mRef = FirebaseDatabase.getInstance().getReference().child("Stat").child("Year");
         mRefm = FirebaseDatabase.getInstance().getReference().child("Stat").child("Month");
         dba = FirebaseDatabase.getInstance().getReference().child("Admin_Crime");
@@ -156,6 +157,8 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
         final String postDesc = descText.getText().toString().trim();
         final String lat = latText.getText().toString().trim();
         final String lng = lngText.getText().toString().trim();
+        final float lat1 = Float.parseFloat(lat);
+        final float lng1 = Float.parseFloat(lng);
         final String type = typex;
         mAuth = FirebaseAuth.getInstance();
         if(!TextUtils.isEmpty(type) && !TextUtils.isEmpty(lat) && !TextUtils.isEmpty(lng) && !TextUtils.isEmpty(postTitle) && !TextUtils.isEmpty(postDesc) && imagePath != null){
@@ -165,6 +168,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
             //final StorageReference filePath = storageRef;
             FirebaseUser user1 = mAuth.getCurrentUser();
             final DatabaseReference newpost = databaseRef.push();
+            final DatabaseReference loc = dbloc.push();
             final DatabaseReference adminpost = dba.child(adminUUID).push();
             //uploading hobe
 
@@ -197,6 +201,10 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
                            newpost.child("condition").setValue("Not Seen");
                            newpost.child("latitude").setValue(lat);
                            newpost.child("longitude").setValue(lng);
+
+                           loc.child("lat1").setValue(lat1);
+                           loc.child("lng").setValue(lng1);
+
                            newpost.child("type").setValue(type);
                            newpost.child("uid").setValue(user1.getUid());
                            newpost.child("year").setValue(year);
