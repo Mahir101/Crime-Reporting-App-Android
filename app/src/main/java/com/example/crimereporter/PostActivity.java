@@ -170,6 +170,7 @@ public class PostActivity extends AppCompatActivity implements AdapterView.OnIte
             final DatabaseReference newpost = databaseRef.push();
             final DatabaseReference loc = dbloc.push();
             final DatabaseReference adminpost = dba.child(adminUUID).push();
+
             //uploading hobe
 
            filePath.putFile(imagePath)
