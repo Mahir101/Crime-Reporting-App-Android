@@ -23,7 +23,6 @@ tools:context=".MapActivity">
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="#039BE5"
-        android:onClick="sendtoPost"
         android:text="Done"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent"

@@ -69,7 +69,7 @@ public class MapShowActivity extends AppCompatActivity implements OnMapReadyCall
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MapShowActivity.this, PostActivity.class);
+                Intent intent = new Intent(MapShowActivity.this, UIActivity.class);
                 startActivity(intent);
                 finish();
                 //enableLocation();

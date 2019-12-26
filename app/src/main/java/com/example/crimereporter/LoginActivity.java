@@ -2,14 +2,15 @@ package com.example.crimereporter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                sendToMain();
+                                sendToUI();
                             }else {
                                 toastmessage("Can't Login. TRY AGAIN WITH CORRECT INFORMATION");
                             }
@@ -78,8 +79,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = fireAuth.getCurrentUser();
         if(currentUser != null){
-            sendToMain();
+            sendToUI();
         }
+
+    }
+
+    private void sendToUI() {
+        Intent mainIntent = new Intent(LoginActivity.this, UIActivity.class);
+        startActivity(mainIntent);
+        finish();
 
     }
 

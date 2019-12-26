@@ -4,7 +4,10 @@
     package="com.example.crimereporter">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MapShowActivity"></activity>
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".MapShowActivity" />
         <activity android:name=".PieChartActivity" />
         <activity android:name=".BarChartActivity" />
         <activity android:name=".ChartActivity" />

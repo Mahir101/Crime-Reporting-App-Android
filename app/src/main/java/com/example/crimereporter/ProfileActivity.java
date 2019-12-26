@@ -1,34 +1,23 @@
 package com.example.crimereporter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
-
-
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -37,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText mobile;
     private EditText city;
     private EditText country;
-    private EditText age;
+    private EditText age,ph1,ph2;
     private Button btn;
 
     private DatabaseReference databaseRef,databaseRe;
@@ -51,6 +40,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+        ph1 = (EditText) findViewById(R.id.ph1);
+        ph2 = (EditText) findViewById(R.id.ph2);
         name = (EditText) findViewById(R.id.proName);
         email = (EditText) findViewById(R.id.proEmail);
         mobile = (EditText) findViewById(R.id.proMobile);
@@ -70,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                UserInformation value = dataSnapshot.getValue(UserInformation.class);
                // Log.d(TAG, "Value is: " + value);
+                  //  dataSnapshot.getRef().child("name").setValue("sagol");
 
                    String nam = value.name;
                    String ci = value.city;
@@ -78,6 +71,10 @@ public class ProfileActivity extends AppCompatActivity {
                  String em = user1.getEmail();
                  String co = value.country;
 
+                 String p1 = value.p1;
+                 String p2 = value.p2;
+
+
                   name.setText(nam);
                   email.setText(em);
                  mobile.setText(mo);
@@ -85,6 +82,9 @@ public class ProfileActivity extends AppCompatActivity {
                   age.setText(po);
                   country.setText(co);
                   email.setEnabled(false);
+                  ph1.setText(p1);
+                  ph2.setText(p2);
+
 
 
 
@@ -109,6 +109,8 @@ public class ProfileActivity extends AppCompatActivity {
                 final String countryx = country.getText().toString().trim();
                 final String agex = age.getText().toString().trim();
                 final String mobilex = mobile.getText().toString().trim();
+                final String phone1 = ph1.getText().toString().trim();
+                final String phone2 = ph2.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(namex)) {
@@ -138,7 +140,7 @@ public class ProfileActivity extends AppCompatActivity {
                         && !TextUtils.isEmpty(mobilex)  && !TextUtils.isEmpty(countryx) ) {
 
                     FirebaseUser user1 = mAuth.getCurrentUser();
-                    UserInformation user2 = new UserInformation(namex, cityx, countryx, agex, mobilex);
+                    UserInformation user2 = new UserInformation(namex, cityx, countryx, agex, mobilex, phone1, phone2);
                     databaseRef.child(user1.getUid()).setValue(user2);
 
                    sendToMain();

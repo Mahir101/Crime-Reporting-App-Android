@@ -5,15 +5,33 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UIActivity extends AppCompatActivity {
 
+
+    FirebaseDatabase mFirebaseDatabase;
+    DatabaseReference mRef;
+
+    private Toolbar mainToolbar;
+    //private FirebaseAuth fireAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ui);
 
+        FirebaseUser currentuser = FirebaseAuth.getInstance().getCurrentUser();
+        
+        if (currentuser == null) {
+            sendtoLogin();
+        }
 
+      //  fireAuth = FirebaseAuth.getInstance();
 
 
     }
@@ -57,6 +75,11 @@ public class UIActivity extends AppCompatActivity {
 
 
 
+    private void sendtoLogin() {
+        Intent intent = new Intent(UIActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
 
 
